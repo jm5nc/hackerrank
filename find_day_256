@@ -1,0 +1,28 @@
+def dayOfProgrammer(year):
+    
+    if year < 1918:     #Julian ~1917, 
+        cal = "jul"
+    elif year > 1918:   #Gregorian 1919~
+        cal = "greg"
+    elif year == 1918:  #switched 1918 where no Feb1-13
+        cal = "switch"
+    else:
+        print('check input')
+    
+    leap = False
+    if cal == "jul":
+        if year % 4 == 0:
+            leap = True    #Julian leap if div by 4
+    elif cal == "greg":
+        if year % 400 == 0 or (year % 4 == 0 and year % 100 != 0):
+            leap = True    #Greg leap if div by 400, or div by 4 and not by 100
+    
+    # find day 256 given the year, 
+    if cal == "switch":
+        day256 = "31.08.1918"           # deal with edge case first
+    if leap == True:
+        day256 = "12.09." + str(year)   # Sept 12 in leap yr
+    else:
+        day256 = "13.09." + str(year)   # Sept 13 non leap
+        
+    return day256
