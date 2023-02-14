@@ -19,8 +19,8 @@ def dayOfProgrammer(year):
     
     # find day 256 given the year, 
     if cal == "switch":
-        day256 = "31.08.1918"           # deal with edge case first
-    if leap == True:
+        day256 = "26.09.1918"           # deal with edge case first
+    elif leap == True:
         day256 = "12.09." + str(year)   # Sept 12 in leap yr
     else:
         day256 = "13.09." + str(year)   # Sept 13 non leap
