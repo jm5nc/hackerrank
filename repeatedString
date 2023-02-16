@@ -7,8 +7,6 @@ import re
 import sys
 
 #
-# Complete the 'repeatedString' function below.
-#
 # The function is expected to return a LONG_INTEGER.
 # The function accepts following parameters:
 #  1. STRING s
@@ -17,13 +15,19 @@ import sys
 
 def repeatedString(s, n):
     
-    xs, a = s, 0
-    while len(xs) < n:
-        xs += s
-    for x in xs[:n]:
-        if x == "a":
-            a += 1
-    return a
+    s_reps = n // len(s)
+    n_rem = n % len(s)
+    s_part = s[:n_rem]
+    a_in_s = 0
+    a_in_s_part = 0
+    for i in range(len(s)):
+        if s[i] == "a":
+            a_in_s += 1
+            if i in range(len(s_part)):
+                a_in_s_part +=1
+    
+    total_a = (a_in_s) * s_reps + a_in_s_part
+    return total_a     
     
 
 if __name__ == '__main__':
