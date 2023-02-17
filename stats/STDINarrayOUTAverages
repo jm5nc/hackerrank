@@ -1,0 +1,28 @@
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+
+n = int(input())
+x = sorted([int(i) for i in input().split()])
+
+mean = (sum(x)/n)
+    
+median = ""
+x = sorted(x)
+if n % 2 != 0:
+    median = x[n // 2]
+else:
+    idx = int(n / 2)
+    median = ( 
+        (x[idx]) + (x[idx -1])
+        ) / 2
+
+mode = min(x) #init
+best = 0
+for num in x:
+    ct = x.count(num)
+    if ct > best:
+        mode = num
+        best = ct 
+    elif ct == best:
+        min(x) # default for tie 
+
+print("{}\n{}\n{}".format(mean, median, mode))
