@@ -28,6 +28,7 @@ def findLeftRight(arr):
     #returns tuple of sub-arrays, central val not inc if n odd
 
     arr.sort()
+    n = len(arr)
     if len(arr) % 2 == 0: #then even
         return arr[:(n//2)], arr[(n//2):]
     else: #odd
@@ -35,7 +36,6 @@ def findLeftRight(arr):
             
     
 def quartiles(arr):
-    
     
     l, r  = findLeftRight(arr)
     q1 = median(l)
