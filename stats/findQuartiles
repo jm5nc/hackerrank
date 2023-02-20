@@ -1,0 +1,62 @@
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+#
+# Complete the 'quartiles' function below.
+#
+# The function is expected to return an INTEGER_ARRAY.
+# The function accepts INTEGER_ARRAY arr as parameter.
+#
+
+def median(arr):   
+    
+    arr.sort()
+    n = len(arr)
+    if n % 2 != 0:
+        return arr[n // 2]
+    else:
+        idx = int(n / 2)
+        return ((arr[idx]) + (arr[idx -1])) / 2
+    
+        
+def findLeftRight(arr):
+    #returns tuple of sub-arrays, central val not inc if n odd
+
+    arr.sort()
+    if len(arr) % 2 == 0: #then even
+        return arr[:(n//2)], arr[(n//2):]
+    else: #odd
+        return arr[:(n//2)], arr[(n//2)+1:]
+            
+    
+def quartiles(arr):
+    
+    
+    l, r  = findLeftRight(arr)
+    q1 = median(l)
+    q2 = median(arr)
+    q3 = median(r)
+    
+    return int(q1), int(q2), int(q3)
+    
+    
+        
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    n = int(input().strip())
+
+    data = list(map(int, input().rstrip().split()))
+
+    res = quartiles(data)
+
+    fptr.write('\n'.join(map(str, res)))
+    fptr.write('\n')
+
+    fptr.close()
