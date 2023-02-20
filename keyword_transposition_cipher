@@ -1,0 +1,59 @@
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+import string
+
+n = int(input().strip())
+for _ in range(n):
+    abc = [x for x in string.ascii_uppercase]
+    abc2 = [x for x in string.ascii_uppercase] #because now i need it again but only realised after modifying it
+    keyword = input().strip()
+    #key_ch = list(set(keyword)) # changes order
+    key_ch = []
+    for ch in keyword:
+        if ch not in key_ch:
+            key_ch.append(ch)
+            abc.remove(ch)
+    ciphertext = input().strip()
+    #cipher_arr = ciphertext.split() #change approach to forwards first
+    txt = ""
+    for i in range(len(abc)):
+        txt += abc[i]
+        i += 1
+        if i % len(key_ch) == 0:
+            txt += " "
+    arr = txt.split()
+    key_uniq = "".join(key_ch)
+    arr.insert(0, key_uniq)
+    #print(arr) we now have alphabet arranged beneath keyword
+    safe_ch = "*" # to avoid empty slots when transposing
+    if len(arr[-1]) < len(key_ch):
+        shortfall = (len(key_ch) - len(arr[-1]))
+        safe_last = arr[-1] + safe_ch * shortfall
+        arr.pop()
+        arr.append(safe_last)
+    #print(arr)
+    #need to put columns in keyword alphabetical order
+    alph_key_ch = sorted(key_ch)
+    alph_idx = []
+    for ch in alph_key_ch: # taking uniq chars from kwd in alph order
+        ch_idx = key_ch.index(ch) # to find that column
+        alph_idx.append(ch_idx)
+    #print(alph_idx)
+    alph_arr = []
+    #using alph_idx order, transpose from arr
+    for i in alph_idx:
+        tmp = ""
+        for word in arr:
+            tmp += word[i]
+            if tmp[-1] == safe_ch:
+                tmp = tmp[:-1]            
+        alph_arr.append(tmp)
+    code = "".join(alph_arr)
+    solved = ""
+    for ch in ciphertext:
+        if ch == " ":
+            solved += " "
+        else:
+            idx = code.index(ch)
+            solved += abc2[idx]
+    print(solved)
+    
