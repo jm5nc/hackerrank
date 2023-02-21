@@ -1,0 +1,15 @@
+nums = input().strip().split()
+N, M = int(nums[0]), int(nums[1])
+
+pattern = ""
+pt_A = "---" 
+pt_B = ".|." 
+for row in range(1, N+1):
+    if row == (N+1)/2:
+        pattern += int((M-7)*0.5)*"-" + "WELCOME" + int((M-7)*0.5)*"-" + "\n"
+    else: 
+        dist = int((abs((N+1)/2 - row))) # distance from middle row
+        pattern += (pt_A * (dist)) + (pt_B * ((M//3)-(dist*2))   ) + (pt_A * (dist)) + "\n" 
+pattern.strip()
+
+print(pattern)
