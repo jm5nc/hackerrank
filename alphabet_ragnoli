@@ -1,0 +1,33 @@
+import string
+
+def print_rangoli(size):
+    
+    abc = [i for i in string.ascii_lowercase]
+    
+    base = ""
+    for i in range(1, size):
+        base +=  (abc[size - i] + "-") 
+    for i in range(size):
+        base += (abc[i] + "-")
+    base = base[:-1]  
+    
+    pattern = ""
+    for i in range(1, 2*size):
+        if i == size:  #middle row
+            pattern += base + "\n"  
+        
+        else:
+            edge = "-"*2*abs(size -i)
+            dist = abs(size - i)
+            pattern += edge + base[:(2*size)-(2*dist)] + base[(2*size)+(2*dist):] + edge + "\n"  
+            if i == 1 or i == 2*size -1:
+                pattern = pattern[:-2] + "\n"            
+    print(pattern)
+      
+"""
+----c----
+--c-b-c--
+c-b-a-b-c
+--c-b-c--
+----c----
+"""   
