@@ -1,0 +1,37 @@
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+
+def minimumDistances(arr):
+
+    min_dist = -1
+    dist = []
+    for idx, val in enumerate(arr[:-1]):
+        
+        if val in arr[idx+1:]:
+            d = a[idx+1:].index(arr[idx]) +1   
+            dist.append(d)
+            
+    if len(dist) > 0:
+        min_dist = min(dist)   
+        
+    return min_dist
+           
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    n = int(input().strip())
+
+    a = list(map(int, input().rstrip().split()))
+
+    result = minimumDistances(a)
+
+    fptr.write(str(result) + '\n')
+
+    fptr.close()
