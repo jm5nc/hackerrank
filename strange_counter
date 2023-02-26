@@ -1,0 +1,42 @@
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+#
+# Complete the 'strangeCounter' function below.
+#
+# The function is expected to return a LONG_INTEGER.
+# The function accepts LONG_INTEGER t as parameter.
+#
+
+def strangeCounter(t):
+    
+    current_length = 3
+    count_to_prev = 0
+    x = 1
+    while x <= t:
+        if x > count_to_prev + current_length:
+            count_to_prev += current_length 
+            current_length *= 2
+        x += 1
+    pos_in_slot = t - count_to_prev
+    value = current_length - pos_in_slot + 1
+    
+    return value
+        
+    
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    t = int(input().strip())
+
+    result = strangeCounter(t)
+
+    fptr.write(str(result) + '\n')
+
+    fptr.close()
