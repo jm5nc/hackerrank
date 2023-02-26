@@ -15,17 +15,11 @@ import sys
 
 def strangeCounter(t):
     
-    current_length = 3
-    count_to_prev = 0
-    x = 1
-    while x <= t:
-        if x > count_to_prev + current_length:
-            count_to_prev += current_length 
-            current_length *= 2
-        x += 1
-    pos_in_slot = t - count_to_prev
-    value = current_length - pos_in_slot + 1
-    
+    start_value = 3
+    while t >= 2*start_value -2:
+        start_value *= 2
+    value = 2*start_value -2 -t        
+        
     return value
         
     
