@@ -3,12 +3,18 @@ import re
 
 ord_d = OrderedDict()
 n = int(input().strip())
-reg = r"^([A-Z\s]+)(\d+)$"
+#reg = r"^([A-Z\s]+)(\d+)$"
+
 for ln in range(n):
-    info = input().strip()
-    match = re.match(reg, info)
-    item_name = match.group(1)[:-1]
-    net_price = match.group(2)
+    
+    #info = input().strip()
+    #match = re.match(reg, info)
+    #item_name = match.group(1)[:-1]
+    #net_price = match.group(2)
+    
+    info = input().strip().rsplit(" ", 1)
+    item_name = info[0]
+    net_price = info[1]
     
     if item_name not in ord_d:
         ord_d[item_name] = int(net_price)
