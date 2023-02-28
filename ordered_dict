@@ -1,0 +1,20 @@
+from collections import OrderedDict
+import re
+
+ord_d = OrderedDict()
+n = int(input().strip())
+reg = r"^([A-Z\s]+)(\d+)$"
+for ln in range(n):
+    info = input().strip()
+    match = re.match(reg, info)
+    item_name = match.group(1)[:-1]
+    net_price = match.group(2)
+    
+    if item_name not in ord_d:
+        ord_d[item_name] = int(net_price)
+    else:
+        ord_d[item_name] += int(net_price)
+  
+for k,v in ord_d.items():
+    print(k,v)
+    
