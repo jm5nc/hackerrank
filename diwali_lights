@@ -1,0 +1,34 @@
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+#
+# Complete the 'lights' function below.
+#
+
+def lights(n):
+    
+    # n bulbs, on or off, therefore 2^n 
+    # subtract 1 perm because all off invalid ans
+    # Print the total number of patterns modulo 10^5
+    
+    return  ( 2**n -1 ) % 10**5
+    
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    t = int(input().strip())
+
+    for t_itr in range(t):
+        n = int(input().strip())
+
+        result = lights(n)
+
+        fptr.write(str(result) + '\n')
+
+    fptr.close()
