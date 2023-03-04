@@ -1,0 +1,42 @@
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+#
+# Complete the 'solve' function below.
+#
+# The function is expected to return an INTEGER.
+# The function accepts following parameters:
+#  1. INTEGER n (types of candies on sale)
+#  2. INTEGER k (num of candies to buy)
+#
+
+def solve(n, k):
+    
+    # n + k-1 choose k   ..rather than, n choose k
+    # because with repetition  
+    # https://en.wikipedia.org/wiki/Combination    
+    ans = math.comb(n + k-1, k)
+    
+    return ans % 10 ** 9
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    t = int(input().strip())
+
+    for t_itr in range(t):
+        n = int(input().strip())
+
+        k = int(input().strip())
+
+        result = solve(n, k)
+        
+        fptr.write(str(result))
+        fptr.write('\n')
+
+    fptr.close()
