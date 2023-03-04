@@ -5,7 +5,7 @@ import os
 import random
 import re
 import sys
-
+import collections
 #
 # Complete the 'solve' function below.
 #
@@ -14,12 +14,12 @@ import sys
 #
 
 def solve(a):
-    counter = 0
-    for i in range(len(a)):
-        for j in range(i+1, len(a)):
-            if a[i] == a[j]:
-                counter += 2
-    return counter
+    pairs = 0
+    counter = collections.Counter(a)
+    for num in counter:
+        if counter[num] > 1:   #1>>0, 2>>2, 3>>6, 4>>12
+            pairs += (counter[num] * (counter[num]-1))     
+    return pairs
     
 
 if __name__ == '__main__':
