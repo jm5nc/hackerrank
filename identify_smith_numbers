@@ -1,0 +1,51 @@
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+#
+# Complete the 'solve' function below.
+#
+# The function is expected to return an INTEGER.
+# The function accepts INTEGER n as parameter.
+#
+
+def solve(n):
+    
+    sum_digits = sum(map(int, str(n)))
+    pf = []
+    i = 2
+    while i <= n:
+        if n % i == 0:
+            pf.append(i)
+            n = n // i # thanks chisom213 for this tip
+        else:
+            i += 1
+    # this way will collect all the prime factors including multiples  such as in the example 378 = 2*3*3*3*7 where my previous code failed by only including 3 once for that.
+    print(pf, sum_digits)   
+                 
+    sum_pf = 0
+    for x in pf:
+        for ch in str(x):
+            sum_pf += int(ch)
+    print(sum_pf)
+    
+    smith = 1 if sum_digits == sum_pf else 0
+    return smith 
+        
+    #harder work than I'd imagined that one.
+    
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    n = int(input().strip())
+
+    result = solve(n)
+
+    fptr.write(str(result) + '\n')
+
+    fptr.close()
