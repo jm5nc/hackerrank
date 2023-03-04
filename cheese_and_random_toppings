@@ -15,14 +15,31 @@ import sys
 #  2. INTEGER r
 #  3. INTEGER m
 #
-def fact(n):
-    f = 1
-    for i in range(1, n+1):
-        f *= i
-    return f
+
 
 def solve(n, r, m):
-    nCr = fact(n) // (fact(r) * fact(n-r))
+
+    #r and n-r either way 
+    if r == n-r:
+        a,b = r,n-r
+    else:
+        a,b = min(r, n-r), max(r, n-r)
+    
+    afact = 1
+    for i in range(1, a+1):
+        afact *= i
+        
+    bfact = afact
+    if b>a:
+        for i in range(a+1, b+1):
+            bfact *= i
+    
+    nfact = bfact
+    if n>b:
+        for i in range(b+1, n+1):
+            nfact *= i    
+    
+    nCr = nfact // (afact * bfact)
     return nCr % m
     
 if __name__ == '__main__':
