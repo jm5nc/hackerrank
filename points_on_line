@@ -1,0 +1,29 @@
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+
+if __name__ == '__main__':
+    n = int(input())
+    xarr = []
+    yarr = []
+
+    for n_itr in range(n):
+        xy = input().split()
+        x = int(xy[0])
+        y = int(xy[1])
+    
+        xarr.append(x)
+        yarr.append(y)
+        
+    uniqx = set(xarr)
+    uniqy = set(yarr)
+    if len(uniqx) == 1 or len(uniqy) == 1:
+        print('YES')
+    else:
+        print('NO')
+
