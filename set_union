@@ -1,0 +1,12 @@
+#!/usr/bin/env python3
+
+N = int(input().strip())
+n = set(map(int, input().strip().split()))
+B = int(input().strip())
+b = set(map(int, input().strip().split()))
+
+u = n.union(b)
+counter = 0
+for i in u:
+    counter += 1
+print(counter)
