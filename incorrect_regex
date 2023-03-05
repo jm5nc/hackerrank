@@ -1,0 +1,14 @@
+#!/usr/bin/env python3
+
+import re
+
+T = int(input().strip())
+for _ in range(T):
+    s = input().strip()
+    pattern = 'r"'+s+'"'
+    
+    try:
+        re.compile(pattern)
+        print(True)
+    except:
+        print(False)
