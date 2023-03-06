@@ -2,8 +2,8 @@
 
 n, m = map(int, input().strip().split())
 arr = input().strip().split()
-like = input().strip().split()
-dislike = input().strip().split()
+like = set(input().strip().split())
+dislike = set(input().strip().split())
 
 set_arr = set(arr)
 set_like = set_arr and like
@@ -17,4 +17,3 @@ for a in arr:
         h -= 1
               
 print(h)
-
