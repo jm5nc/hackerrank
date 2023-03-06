@@ -1,0 +1,9 @@
+#!usr/bin/env python3
+
+import math
+
+AB, BC = int(input().strip()), int(input().strip())
+
+theta = math.atan(AB/BC) # in radians
+
+print(round(math.degrees(theta)),chr(176), sep='')
