@@ -1,0 +1,12 @@
+#!/usr/bin/env python3
+
+from collections import Counter
+
+n = int(input().strip())
+words = []
+for _ in range(n):
+    words.append(input().strip())
+    
+counts = Counter(words)
+
+print(str(len(counts))+"\n"+(" ".join(str(v) for k,v in counts.items())))
