@@ -1,0 +1,10 @@
+#!/usr/bin/env python3
+
+from itertools import combinations_with_replacement
+
+inp = input().strip().split()
+s, k = sorted(inp[0]), int(inp[1])
+
+
+for perm in list(combinations_with_replacement(s,k)):
+    print("".join(perm))
