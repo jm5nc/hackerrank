@@ -1,0 +1,25 @@
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+
+###INPUTS
+n, m = map(int, input().strip().split())
+arr = input().strip().split()
+like = input().strip().split()
+dislike = input().strip().split()
+
+
+h = 0 #init happiness
+
+for a in arr:
+    if a in like:
+        h += 1
+    elif a in dislike:
+        h -= 1
+        
+#h = sum( [(x in like) - (x in dislike) for x in arr]) 
+        
+print(h)
+
+
+
+
+        
