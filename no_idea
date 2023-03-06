@@ -1,25 +1,20 @@
-# Enter your code here. Read input from STDIN. Print output to STDOUT
+#!/usr/bin/env python3
 
-###INPUTS
 n, m = map(int, input().strip().split())
 arr = input().strip().split()
 like = input().strip().split()
 dislike = input().strip().split()
 
+set_arr = set(arr)
+set_like = set_arr and like
+set_dislike = set_arr and dislike
 
 h = 0 #init happiness
-
 for a in arr:
-    if a in like:
+    if a in set_like:
         h += 1
-    elif a in dislike:
+    elif a in set_dislike:
         h -= 1
-        
-#h = sum( [(x in like) - (x in dislike) for x in arr]) 
-        
+              
 print(h)
 
-
-
-
-        
