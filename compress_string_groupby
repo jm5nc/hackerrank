@@ -1,0 +1,19 @@
+#!/usr/bin/env python3
+
+from itertools import groupby
+
+s = list(input().strip())
+
+gather = groupby(s)
+
+ls = [] # to collect info for printing
+
+for key, group in gather:
+    group_then_key = (len(list(group)), int(key)) # which collects all the occurrences of each key in groupby object, 
+    # and places in tuple with the key as problem requests for output
+    
+    print(group_then_key, end=" ")
+    #ls.append(str(group_then_key))
+    
+      
+#print(" ".join(ls))
