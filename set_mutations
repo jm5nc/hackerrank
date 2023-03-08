@@ -1,0 +1,19 @@
+#!/usr/bin/env python3
+
+
+a_n = int(input().strip())
+a = set(map(int, input().strip().split()))
+n = int(input().strip())
+for i in range(n):
+    fr = input().strip().split()
+    bk = set(map(int, input().strip().split()))
+    if fr[0] == 'intersection_update':
+        a.intersection_update(bk)
+    elif fr[0] == 'update':
+        a.update(bk)
+    elif fr[0] == 'symmetric_difference_update':
+        a.symmetric_difference_update(bk)
+    elif fr[0] == 'difference_update':
+        a.difference_update(bk)
+    #print(a)   
+print(sum(a))
