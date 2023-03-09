@@ -1,0 +1,17 @@
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    a = set(map(int, input().split()))
+    m = int(input())
+    b = set(map(int, input().split()))
+    
+    flag = "all in"
+    
+    for num in a:
+        if num not in b:
+            print('False')
+            flag = "out"
+            break
+    
+    if flag == "all in":
+        print('True')
