@@ -1,0 +1,13 @@
+#!/usr/bin/env python3
+
+from itertools import permutations as perm
+
+class Solution:
+    def checkInclusion(self, s1: str, s2: str) -> bool:
+
+        pa = set("".join(p) for p in perm(s1))
+
+        for p in pa:
+            if p in s2:
+                return True
+        return False
