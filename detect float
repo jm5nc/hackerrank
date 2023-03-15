@@ -1,0 +1,15 @@
+#!/usr/bin/env python3
+
+import re
+
+t = int(input())
+for _ in range(t):
+    
+    s = input()
+
+    reg = r"^[+-]{,1}\d*[.]\d+$"
+    if (re.match(reg,s)):
+        print(True)
+    else: 
+        print(False)
+        
